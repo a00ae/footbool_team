@@ -9,7 +9,10 @@
 <body>
 
     <div id="container" class="container">
-     <div class="markz"></div>   
+     <div class="markz"></div>
+     <svg class="circle-markz">
+        <circle id="mz-circle" fill="none" stroke="#aaa" stroke-width="10" cx="200" cy="-40" width="400" height="200" r="160"></circle>
+     </svg>   
     <svg id="svg" class="svg">
 
         <path d="M 0 1 L 640 0 V 313 " stroke="#bbb" stroke-width="15" fill="none"></path>
@@ -23,9 +26,13 @@
         <div id="attacks" class="attacks">
            
         </div>
-        <div class="middle"></div>
-        <div class="defense"></div>
-        <div class="goalkeeping"></div>
+        <div id="middle" class="middle"></div>
+        <div class="goalkeeping">
+            <div class="player-container-Abo">
+                <div class="player"></div>
+                <span class="player-Abo">Abo</span>
+            </div>
+        </div>
 
 
     </div>
