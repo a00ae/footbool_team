@@ -1,10 +1,12 @@
 const container = document.getElementById("container");
 
 // attacks
-const attacks = ["Mohammed", "Yousef", "Ibrahim"];
-const middle = ["Yaman", "Fajr", "Hassan"];
+// const attacks = ["Mohammed", "Yousef", "Ibrahim"];
+// const middle = ["Yaman", "Fajr", "Hassan"];
 
-for (let i = 0; i < 8; i++) {
+
+// الارضية
+for (let i = 0; i < 20; i++) {
   const child = document.createElement("div");
 
   child.id = `child-${i}`;
@@ -16,64 +18,125 @@ for (let i = 0; i < 8; i++) {
   }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+const team = {
+  attacks: [
+    {
+      id: 1,
+      number: 9,
+      name: "Mohammed",
+      position: "LW",
+    },
+    {
+      id: 2,
+      number: 7,
+      name: "Yousef",
+      position: "CF",
+    },
+    {
+      id: 3,
+      number: 11,
+      name: "Ibrahim",
+      position: "RW",
+    },
+  ],
+  middle: [
+    {
+      id: 4,
+      number: 5,
+      name: "Yaman",
+      position: "LB",
+    },
+    {
+      id: 5,
+      number: 8,
+      name: "Fajr",
+      position: "CM",
+    },
+    {
+      id: 6,
+      number: 4,
+      name: "Hassan",
+      position: "RB",
+    },
+  ],
+};
+
+
+
 // middle
-for (let j = 0; j < attacks.length; j++) {
-  const playerContainer = document.createElement("div");
-  const pleyer = document.createElement("div");
-  const pleyerName = document.createElement("span");
-  const playerNumber= document.createElement("span");
+
+const renderPlayres = (playerArray, containerId) => {
+    // attacks, middle
+  const parentContainer = document.getElementById(containerId);
+
+
+  console.log(parentContainer);
+
+  // Loop And Element
+  playerArray.forEach((player) => {
+// إنشاء عناصر لكل لاعب على حدة
+        const playerContainer = document.createElement("div");
+        const playerInner = document.createElement("div");
+        const playerName = document.createElement("span");
+        const playerNumber = document.createElement("span");
+
+        // تعبئة البيانات
+        playerNumber.innerText = player.number;
+        playerName.innerText = player.name;
+
+        playerInner.appendChild(playerNumber);
+        playerContainer.appendChild(playerInner);
+        playerContainer.appendChild(playerName);
+
+        // التصميم والـ Classes الخاصة بحاوية هذا اللاعب فقط
+        playerContainer.classList.add(`player-container-${player.name}`); // أو حسب ما تريده (مثلاً باسم اللاعب أو مركزه)
+        playerContainer.style.display = "flex";
+        playerContainer.style.flexDirection = "column";
+        playerContainer.style.alignItems = "center";
+        playerContainer.style.gap = "10px";
+        playerContainer.style.position = "absolute";
+
+        playerInner.classList.add("player");
+        playerInner.id = `player-${player.name}`;
+
+        // إضافته إلى الأب الرئيسي (attacks أو middle)
+        parentContainer.appendChild(playerContainer);
+
+
+  });
+};
+
+renderPlayres(team.attacks, "attacks");
+renderPlayres(team.middle, "middle");
 
 
 
-//   player Number;
-
-pleyer.appendChild(playerNumber);
-
-
-// playerNumber.innerText = 10;
 
 
 
 
 
 
-  playerContainer.appendChild(pleyer);
-  playerContainer.appendChild(pleyerName);
-  playerContainer.classList.add(`player-container-${attacks[j]}`);
-  playerContainer.style.display = "flex";
-  playerContainer.style.flexDirection = "column";
-  playerContainer.style.alignItems = "center";
-  playerContainer.style.gap = "10px";
-  playerContainer.style.position = "absolute";
-  document.getElementById("attacks").appendChild(playerContainer);
-  pleyer.classList.add("player");
-  pleyer.id = `player-${attacks[j]}`;
 
-  pleyerName.innerText = attacks[j];
-}
-
-for (let x = 0; x < middle.length; x++) {
-
-  const playerContainer = document.createElement("div");
-  const pleyer = document.createElement("div");
-  const pleyerName = document.createElement("span");
-
-  playerContainer.appendChild(pleyer);
-  playerContainer.appendChild(pleyerName);
-  playerContainer.classList.add(`player-container-${middle[x]}`);
-  console.log(middle[x])
-  playerContainer.style.display = "flex";
-  playerContainer.style.flexDirection = "column";
-  playerContainer.style.alignItems = "center";
-  playerContainer.style.gap = "10px";
-  playerContainer.style.position = "absolute";
-  document.getElementById("middle").appendChild(playerContainer);
-
-  pleyer.classList.add("player");
-  pleyer.id = `player-${middle[x]}`;
-
-  pleyerName.innerText = middle[x];
-}
 
 // // ^ Yousef + 10;
 // const yousef = document.createElement("div");

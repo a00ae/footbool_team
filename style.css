@@ -24,9 +24,15 @@ body {
   flex-direction: column;
   position: relative;
   & .markz {
-    flex-basis: 5%;
-    background-color: #bababa;
-    z-index: 1;
+    width: 100%;
+    height: 10px;
+    background-color: #bbb;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 1;
+
   }
 
   & > .child {
@@ -36,22 +42,30 @@ body {
 }
 
 .circle-markz {
-    position: absolute;
-    top:0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 400px;
-    height: 200px;
-   
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,calc(-50% + 50px) );
+  width: 600px;
+  height: 400px;
 }
 
-.svg {
+.svg-bottom, .svg-top {
   position: absolute;
   width: 640px;
-  height: 313px;
-  background-color: transparent;
-  bottom: 0;
-  left: 320px;
+  height: 125px;
+  background-color: aquamarine;
+   left: 320px;
+
+}
+.svg-top {
+    top: 0;
+
+}
+
+.svg-bottom {
+    bottom: 0;
+ 
 }
 
 .team {
@@ -64,66 +78,66 @@ body {
   display: flex;
   flex-direction: column;
 
-
   [class*="player-container-"] {
     position: absolute;
     display: flex;
     flex-direction: column;
     gap: 10px;
     align-items: center;
-
   }
 
   & .attacks,
-  .middle, 
-  .goalkeeping
-  {
+  .middle,
+  .goalkeeping {
     position: relative;
     width: 100%;
     flex-basis: 100%;
     .player-container-Mohammed {
-      top: 40px;
-      left: 80px;
+      bottom: -40px;
+      left: 180px;
     }
     .player-container-Yousef {
       top: 140px;
       left: 620px;
     }
     .player-container-Ibrahim {
-      top: 40px;
-      right: 80px;
+      bottom: -40px;
+      right: 180px;
     }
   }
 
   & .middle {
     .player-container-Yaman {
-        bottom: 40px;
-        left: 80px;
+      bottom: -10px;
+      left: 380px;
     }
     .player-container-Fajr {
-        top: 70px;
-        right: 620px;
+      top: 60px;
+      right: 620px;
     }
     .player-container-Hassan {
-        bottom:  40px;
-        right: 80px;
+      bottom: -10px;
+      right: 380px;
     }
   }
 
   & .goalkeeping {
     .player-container-Abo {
-        bottom: 20px;
-        left: 620px;
+      bottom: 10px;
+      left: 625px;
     }
   }
 }
 
 .player {
-  width: 40px;
-  height: 40px;
+  width: 30px;
+  height: 30px;
   border-radius: 50%;
   background: black;
   display: flex;
   justify-content: center;
   align-items: center;
+  & > span {
+    font-size: 12px;
+  }
 }
