@@ -23,6 +23,10 @@ interface MatchData {
 
 // --- 2. إنشاء الأرضية (الملعب) ---
 const pitchContainer = document.getElementById("container") as HTMLElement;
+const dailogMenu = document.querySelector(".dailog-menu") as HTMLElement;
+const openBtn = document.getElementById("add-my-attacker-btn");
+
+
 
 // const addingGrassToTheFiled = (grass: number): void => {
 //   for (let i = 0; i < grass; i++) {
@@ -183,22 +187,22 @@ const addNewPlayer = (teamName:  keyof MatchData, lineName: keyof TeamLines, new
 // --- 7. ربط الزر وتحميل الصفحة ---
 document.addEventListener("DOMContentLoaded", () => {
 
-    const addBtn = document.getElementById("add-my-attacker-btn");
 
-    if(addBtn)
+    if(openBtn)
     {
-        addBtn.addEventListener("click", () => {
+        openBtn.addEventListener("click", () => {
             console.log("ok - تم النقر بنجاح");
+            dailogMenu.classList.toggle("active");
 
-            const newPlayer: Player = {
-                id: Math.random(),
-                number: 99,
-                name: "new Striker",
-                position: "ST",
-            };
+            // const newPlayer: Player = {
+            //     id: Math.random(),
+            //     number: 99,
+            //     name: "new Striker",
+            //     position: "ST",
+            // };
 
-            addNewPlayer("myTeam", "attacks", newPlayer);
-            renderPlayers(matchData.myTeam.attacks, "attacks");
+            // addNewPlayer("myTeam", "attacks", newPlayer);
+            // renderPlayers(matchData.myTeam.attacks, "attacks");
         });
     }
     else {
@@ -208,4 +212,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+
+// --- 8. اغلاق النافذة المنبثقة  ---
+
+
+window.addEventListener("mousedown", (e: MouseEvent) =>  {
+    const target = e.target as Node;
+
+    if(dailogMenu && !dailogMenu.contains(target) && openBtn && !openBtn.contains(target)) {
+        dailogMenu.classList.remove("active");
+    }
+});
 

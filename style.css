@@ -92,6 +92,7 @@ body {
     position: relative;
     width: 100%;
     flex-basis: 100%;
+    user-select: none;
     .player-container-Mohammed {
       bottom: -40px;
       left: 180px;
@@ -137,6 +138,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
   & > span {
     font-size: 12px;
   }
@@ -162,7 +164,7 @@ body {
 
 /* Dailog-Menu */
 .dailog-menu {
-      width: 400px;
+    width: 400px;
     height: 400px;
     padding: 25px;
     background-color: #211e1e;
@@ -170,6 +172,14 @@ body {
     left: 50%;
     top: 50%;
     position: absolute;
-    transform: translate(-50%, -50%);
+    transform: translate(-50%, -40%);
     border-radius: 20px;
+    transition: transform 0.3s, opacity 0.2s;
+    opacity: 0;
+    visibility: hidden;
+    &.active {
+      transform: translate(-50%, -50%);
+      opacity: 1;
+      visibility: visible;
+    }
 }
