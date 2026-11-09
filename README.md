@@ -70,7 +70,7 @@ football-tactics-app/
 
 ```bash
 # Clone the repository
-git clone https://github.com/username/football-tactics-app.git
+git clone https://github.com/a00ae/footbool_team.git
 
 # Navigate into project folder
 cd football-tactics-app
