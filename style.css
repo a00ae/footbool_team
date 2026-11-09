@@ -141,3 +141,35 @@ body {
     font-size: 12px;
   }
 }
+
+
+/* Add new player button  */
+
+        /* <button id="" class="add-my-attacker-btn">Add +</button> */
+.add-my-attacker-btn {
+  position: absolute;
+  left: 10px;
+  top: 20px;
+  padding:10px;
+  background-color: white;
+  z-index: 999;
+  cursor: pointer;
+  border: none;
+  border-radius: 999px;
+  
+}
+
+
+/* Dailog-Menu */
+.dailog-menu {
+      width: 400px;
+    height: 400px;
+    padding: 25px;
+    background-color: #211e1e;
+    z-index: 99999;
+    left: 50%;
+    top: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    border-radius: 20px;
+}
