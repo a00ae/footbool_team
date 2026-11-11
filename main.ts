@@ -48,6 +48,49 @@ const dailogMenu = document.querySelector(".dailog-menu") as HTMLElement;
 const openBtn = document.getElementById("add-my-attacker-btn");
 const closeDailog = document.querySelector(".close") as HTMLElement;
 // const modal = document.getElementById("add-player-modal") as HTMLDialogElement;
+const inputBox = document.querySelector(".input-box") as HTMLElement;
+const inputName = (document.getElementById("player-name") as HTMLInputElement);
+const clearInput = document.querySelector(".clear-input") as HTMLElement;
+const countNum = document.getElementById("count-num") as HTMLElement;
+const maxLength = 15; // الحد المسموح به
+
+if(inputName && countNum && clearInput) 
+{
+    
+    inputName.addEventListener("input", () => {
+        clearInput.classList.add("active");
+        const currentLength = inputName.value.trim().length;
+        const remainingChars = maxLength - currentLength;
+        countNum.textContent = remainingChars.toString();
+
+
+        if(remainingChars <= 3)
+        {
+            countNum.style.color = '#ef4444';
+            if(remainingChars === 0) {
+                inputBox.style.borderColor = "#ef4444";
+
+            }
+            else {
+                inputBox.style.borderColor = '';
+            }
+
+        }
+        else {
+            countNum.style.color = '';
+        }
+
+    });
+
+
+    clearInput.addEventListener("click", () => {
+        inputName.value = "";
+        countNum.textContent = '';
+        inputBox.style.borderColor = '';
+        clearInput.classList.remove("active");
+    })
+}
+
 
 // 2. التحقق من وجود الفورم لضمان عدم حدوث أخطاء
 if (form && dailogMenu) {
@@ -92,12 +135,15 @@ const isNumberTaken = (teamName: TeamSide, shirtNumber: number): boolean => {
 const handlePlayerFormSubmit = (e: SubmitEvent, modal: HTMLElement): void => {
     e.preventDefault();
 
-    const inputName = (document.getElementById("player-name") as HTMLInputElement).value;
+    // const inputName = (document.getElementById("player-name") as HTMLInputElement);
     const inputNumber = parseInt((document.getElementById("player-number") as HTMLInputElement).value, 10);
     const inputPosition = (document.getElementById("player-position") as HTMLSelectElement).value as PlayerPosition;
     const inputColor = (document.getElementById("jersey-color") as HTMLInputElement).value;
     const selectedTeam = (document.getElementById("player-team") as HTMLSelectElement).value as TeamSide;
     const selectedLine = (document.getElementById("player-line") as HTMLSelectElement).value as LineType;
+
+
+
 
     // 1. التحقق من النطاق الصحيح لرقم القميص (من 1 إلى 99)
     if (inputNumber < 1 || inputNumber > 99) {
@@ -129,7 +175,7 @@ const handlePlayerFormSubmit = (e: SubmitEvent, modal: HTMLElement): void => {
     // 5. إنشاء كائن اللاعب الجديد وإضافته
     const newPlayer: Player = {
         id: Math.random(),
-        name: inputName,
+        name: inputName.value,
         number: inputNumber,
         position: inputPosition
     };
@@ -318,20 +364,7 @@ document.addEventListener("DOMContentLoaded", () => {
           
         addTitle.innerText = "Add New Player";
         addDesc.innerText = "Add-on Options Section"
-
       }
-
-
-
-      // const newPlayer: Player = {
-      //     id: Math.random(),
-      //     number: 99,
-      //     name: "new Striker",
-      //     position: "ST",
-      // };
-
-      // addNewPlayer("myTeam", "attacks", newPlayer);
-      // renderPlayers(matchData.myTeam.attacks, "attacks");
     });
   } else {
     console.error("خطأ: لم يتم العثور على الزر!");
@@ -354,6 +387,3 @@ window.addEventListener("mousedown", (e: MouseEvent) => {
 });
 
 // اغلاق الناذة من خلال النقر على زر ❌
-closeDailog.onclick = () => {
-    dailogMenu.classList.remove("active");
-}
