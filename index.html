@@ -1,60 +1,160 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
     <!-- remaix icon -->
-     <link href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css" rel="stylesheet">
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
+      rel="stylesheet" />
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Aguafina+Script&family=Carter+One&family=Geist:ital,wght@0,100..900;1,100..900&family=Google+Sans:ital,opsz,wght@0,17..18,400..700;1,17..18,400..700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet" />
     <title>Footboll</title>
-</head>
-<body>
+  </head>
+  <body>
+    <div id="container" class="container">
+      <button id="add-my-attacker-btn" class="add-my-attacker-btn">
+        <i class="ri-add-line"></i>
+      </button>
 
-    <div  id="container" class="container">
-
-        <button id="add-my-attacker-btn" class="add-my-attacker-btn"><i class="ri-add-line"></i></button>
-
-        <div class="dailog-menu"></div>
-     <div class="markz"></div>
-     <svg class="svg-top">
-                <path d="M 0 1  V 120 " stroke="#bbb" stroke-width="15" fill="none"></path>
-                <path d="M 0 125  L 640  125 V 0 " stroke="#bbb" stroke-width="15" fill="none"></path>
-
-
-     </svg>
-     <svg class="circle-markz">
-        <circle id="mz-circle" fill="none" stroke="#aaa" stroke-width="10" cx="300" cy="150" width="200" height="200" r="100"></circle>
-     </svg>   
-    <svg id="svg-bottom" class="svg-bottom">
-
-        <path d="M 0 1 L 640 0 V 313 " stroke="#bbb" stroke-width="15" fill="none"></path>
-        <path d="M 0 1  V 313 " stroke="#bbb" stroke-width="15" fill="none"></path>
-        <circle id="circle"fill="#bbb" cx="320.5" cy="25" width="15" height="15" r="7.5"></circle>
-
-
-    </svg>
-
-    <div class="team">
-        <div id="attacks" class="attacks"></div>
-        <div id="middle" class="middle"></div>
-
-
-        <div class="goalkeeping">
-            <div class="player-container-Abo">
-                <div class="player">
-                    <span class="player-7">25</span>
-                </div>
-                <span class="player-Abo">Abo</span>
-            </div>
+      <div class="dailog-menu">
+        <div class="head">
+          <span id="add"></span>
+          <div class="close">
+            <i class="ri-close-line close-icon"></i>
+          </div>
         </div>
 
+        <!-- نموذج البيانات -->
+        <form id="add-player-form" class="player-form">
+          <!-- اسم اللاعب -->
+          <div class="form-group">
+            <label for="player-name">Player Name</label>
+            <input
+              type="text"
+              id="player-name"
+              placeholder="e.g. Cristiano"
+              required />
+          </div>
 
+          <!-- رقم القميص -->
+          <div class="form-group">
+            <label for="player-number">Shirt Number</label>
+            <input
+              type="number"
+              id="player-number"
+              min="1"
+              max="99"
+              value="99"
+              required />
+          </div>
+
+          <!-- المركز -->
+          <div class="form-group">
+            <label for="player-position">Position</label>
+            <select id="player-position" required>
+              <option value="GK">GK - Goalkeeper</option>
+              <option value="CB">CB - Center Back</option>
+              <option value="LB">LB - Left Back</option>
+              <option value="RB">RB - Right Back</option>
+              <option value="CM">CM - Central Midfield</option>
+              <option value="LW">LW - Left Wing</option>
+              <option value="RW">RW - Right Wing</option>
+              <option value="CF">CF - Center Forward</option>
+              <option value="ST" selected>ST - Striker</option>
+            </select>
+          </div>
+
+          <!-- اختيار الفريق: فريقي أم الخصم (مهم جداً ألا يكون ناقصاً) -->
+          <div class="form-group">
+            <label for="player-team">Target Team</label>
+            <select id="player-team" required>
+              <option value="myTeam" selected>My Team (فريقي)</option>
+              <option value="opponent">Opponent (الخصم)</option>
+            </select>
+          </div>
+
+          <!-- اختيار الخط: هجوم، وسط، أو حراسة -->
+          <div class="form-group">
+            <label for="player-line">Tactical Line</label>
+            <select id="player-line" required>
+              <option value="attacks" selected>Attack / الهجوم</option>
+              <option value="middle">Middle / الوسط</option>
+              <option value="goalkeeping">Goalkeeper / حراسة المرمى</option>
+            </select>
+          </div>
+
+          <!-- لون القميص -->
+          <div class="form-group">
+            <label for="jersey-color">Jersey Color</label>
+            <input type="color" id="jersey-color" value="#3b82f6" />
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="cancel-btn" class="btn-secondary">
+              Cancel
+            </button>
+            <button type="submit" class="btn-primary">Add Player</button>
+          </div>
+        </form>
+      </div>
+      <div class="markz"></div>
+      <svg class="svg-top">
+        <path
+          d="M 0 1  V 120 "
+          stroke="#bbb"
+          stroke-width="15"
+          fill="none"></path>
+        <path
+          d="M 0 125  L 640  125 V 0 "
+          stroke="#bbb"
+          stroke-width="15"
+          fill="none"></path>
+      </svg>
+      <svg class="circle-markz">
+        <circle
+          id="mz-circle"
+          fill="none"
+          stroke="#aaa"
+          stroke-width="10"
+          cx="300"
+          cy="150"
+          width="200"
+          height="200"
+          r="100"></circle>
+      </svg>
+      <svg id="svg-bottom" class="svg-bottom">
+        <path
+          d="M 0 1 L 640 0 V 313 "
+          stroke="#bbb"
+          stroke-width="15"
+          fill="none"></path>
+        <path
+          d="M 0 1  V 313 "
+          stroke="#bbb"
+          stroke-width="15"
+          fill="none"></path>
+        <circle
+          id="circle"
+          fill="#bbb"
+          cx="320.5"
+          cy="25"
+          width="15"
+          height="15"
+          r="7.5"></circle>
+      </svg>
+
+      <div class="team">
+        <div id="attacks" class="attacks"></div>
+        <div id="middle" class="middle"></div>
+        <div id="goalkeeping" class="goalkeeping"></div>
+      </div>
     </div>
-
-
-
-
-    </div>
-    <script type="module" src="main.js" ></script>
-</body>
+    <script type="module" src="main.js"></script>
+  </body>
 </html>
