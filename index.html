@@ -24,10 +24,20 @@
 
       <div class="dailog-menu">
         <div class="head">
-          <span id="add"></span>
-          <div class="close">
-            <i class="ri-close-line close-icon"></i>
+          <div class="left">
+            <div class="football-icon">
+              <i class="ri-football-line text-xl"></i>
+            </div>
+            <div class="title">
+              <h3 id="add-title"></h3>
+              <span id="add-desc"></span>
+
+            </div>
+            
           </div>
+          <!-- <div class="close">
+            <i class="ri-close-line close-icon"></i>
+          </div> -->
         </div>
 
         <!-- نموذج البيانات -->
@@ -36,6 +46,7 @@
           <div class="form-group">
             <label for="player-name">Player Name</label>
             <input
+            autocomplete="off"
               type="text"
               id="player-name"
               placeholder="e.g. Cristiano"
@@ -43,19 +54,20 @@
           </div>
 
           <!-- رقم القميص -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="player-number">Shirt Number</label>
             <input
+            autocomplete="off"
               type="number"
               id="player-number"
               min="1"
               max="99"
               value="99"
               required />
-          </div>
+          </div> -->
 
           <!-- المركز -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="player-position">Position</label>
             <select id="player-position" required>
               <option value="GK">GK - Goalkeeper</option>
@@ -68,39 +80,39 @@
               <option value="CF">CF - Center Forward</option>
               <option value="ST" selected>ST - Striker</option>
             </select>
-          </div>
+          </div> -->
 
           <!-- اختيار الفريق: فريقي أم الخصم (مهم جداً ألا يكون ناقصاً) -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="player-team">Target Team</label>
             <select id="player-team" required>
               <option value="myTeam" selected>My Team (فريقي)</option>
               <option value="opponent">Opponent (الخصم)</option>
             </select>
-          </div>
+          </div> -->
 
           <!-- اختيار الخط: هجوم، وسط، أو حراسة -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="player-line">Tactical Line</label>
             <select id="player-line" required>
               <option value="attacks" selected>Attack / الهجوم</option>
               <option value="middle">Middle / الوسط</option>
               <option value="goalkeeping">Goalkeeper / حراسة المرمى</option>
             </select>
-          </div>
+          </div> -->
 
           <!-- لون القميص -->
-          <div class="form-group">
+          <!-- <div class="form-group">
             <label for="jersey-color">Jersey Color</label>
             <input type="color" id="jersey-color" value="#3b82f6" />
-          </div>
-
+          </div> -->
+<!-- 
           <div class="form-actions">
             <button type="button" id="cancel-btn" class="btn-secondary">
               Cancel
             </button>
             <button type="submit" class="btn-primary">Add Player</button>
-          </div>
+          </div> -->
         </form>
       </div>
       <div class="markz"></div>

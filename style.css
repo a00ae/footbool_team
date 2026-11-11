@@ -1,6 +1,7 @@
 :root {
   --transition-main: 0.3s;
   --hover-btn: #c4c4c4;
+  --bg-card: #1e293b;
 }
 
 * {
@@ -19,6 +20,11 @@ body {
   background-color: #101010;
   overflow: hidden;
   font-family: "Google Sans", sans-serif;
+}
+
+
+input:focus {
+  outline: none;
 }
 
 .container {
@@ -164,10 +170,10 @@ body {
 
 /* Dailog-Menu */
 .dailog-menu {
-  width: 400px;
-  height: 400px;
+  width: 600px;
+  /* height: 400px; */
   padding: 25px;
-  background-color: #211e1e;
+  background-color: var(--bg-card);
   z-index: 99999;
   left: 50%;
   top: 50%;
@@ -191,11 +197,35 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .add {
-      font-weight: 500;
-      display: block;
+    padding: 10px 0;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--hover-btn);
+    .left {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      .football-icon {
+        padding: 15px;
+        background-color: #10b9811a;
+       border:1px solid #34d399;
+       border-radius: 15px;
+        > i {
+          color: #34d399;
+          font-size: 25px;
+        }
+      }
+      .title {
+        display: flex;
+        align-items: start;
+        gap: 6px;
+        flex-direction: column;
+
+        span {
+         color: #f9f9f978;
+        }
+      }
     }
-    .close {
+    /* .close {
       padding: 5px;
       transition: background-color var(--transition-main);
       border-radius: 4px;
@@ -206,11 +236,11 @@ body {
           color: #101010;
         }
       }
-    }
+    } */
   }
 
   /* form */
-  & .form {
+  & .player-form {
     display: flex;
     flex-direction: column;
     gap: 13px;
@@ -219,6 +249,28 @@ body {
       display: flex;
       flex-direction: column;
       gap: 4px;
+      > label {
+        font-size: 12px;
+
+      }
+      > input  {
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid var(--hover-btn);
+        padding: 8px 2px;
+        &:focus {
+          border-color: #ff5809;
+        }
+      }
+
+      > select {
+        padding: 8px 3px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid var(--hover-btn);
+      }
     }
   }
 }
+
+

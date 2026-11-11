@@ -311,8 +311,15 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("ok - تم النقر بنجاح");
       dailogMenu.classList.toggle("active");
       mode = "Add";
-      const addButton = document.getElementById("add");
-      if (addButton) addButton.innerText = "Add New Player";
+      const addTitle = document.getElementById("add-title");
+      const addDesc = document.getElementById("add-desc");
+      if (addTitle && addDesc)
+    {
+          
+        addTitle.innerText = "Add New Player";
+        addDesc.innerText = "Add-on Options Section"
+
+      }
 
 
 
