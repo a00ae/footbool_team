@@ -1,3 +1,9 @@
+:root {
+  --transition-main: 0.3s;
+  --hover-btn: #c4c4c4;
+  --bg-card: #1e293b;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -13,6 +19,12 @@ body {
   height: 100vh;
   background-color: #101010;
   overflow: hidden;
+  font-family: "Google Sans", sans-serif;
+}
+
+
+input:focus {
+  outline: none;
 }
 
 .container {
@@ -27,12 +39,11 @@ body {
     width: 100%;
     height: 10px;
     background-color: #bbb;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 1;
-
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
   }
 
   & > .child {
@@ -45,27 +56,25 @@ body {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translateX(calc(-50% + 6px) ) translateY(calc(-50% + 50px));
+  transform: translateX(calc(-50% + 6px)) translateY(calc(-50% + 50px));
   width: 600px;
   height: 400px;
 }
 
-.svg-bottom, .svg-top {
+.svg-bottom,
+.svg-top {
   position: absolute;
   width: 640px;
   height: 125px;
   background-color: transparent;
-   left: 320px;
-
+  left: 320px;
 }
 .svg-top {
-    top: 0;
-
+  top: 0;
 }
 
 .svg-bottom {
-    bottom: 0;
- 
+  bottom: 0;
 }
 
 .team {
@@ -144,42 +153,124 @@ body {
   }
 }
 
-
 /* Add new player button  */
 
-        /* <button id="" class="add-my-attacker-btn">Add +</button> */
+/* <button id="" class="add-my-attacker-btn">Add +</button> */
 .add-my-attacker-btn {
   position: absolute;
   left: 10px;
   top: 20px;
-  padding:10px;
+  padding: 10px;
   background-color: white;
   z-index: 999;
   cursor: pointer;
   border: none;
   border-radius: 999px;
-  
 }
-
 
 /* Dailog-Menu */
 .dailog-menu {
-    width: 400px;
-    height: 400px;
-    padding: 25px;
-    background-color: #211e1e;
-    z-index: 99999;
-    left: 50%;
-    top: 50%;
-    position: absolute;
-    transform: translate(-50%, -40%);
-    border-radius: 20px;
-    transition: transform 0.3s, opacity 0.2s;
-    opacity: 0;
-    visibility: hidden;
-    &.active {
-      transform: translate(-50%, -50%);
-      opacity: 1;
-      visibility: visible;
+  width: 600px;
+  /* height: 400px; */
+  padding: 25px;
+  background-color: var(--bg-card);
+  z-index: 99999;
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  transform: translate(-50%, -40%);
+  border-radius: 20px;
+  transition:
+    transform 0.3s,
+    opacity 0.2s;
+  opacity: 0;
+  visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  &.active {
+    transform: translate(-50%, -50%);
+    opacity: 1;
+    visibility: visible;
+  }
+  & .head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--hover-btn);
+    .left {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      .football-icon {
+        padding: 15px;
+        background-color: #10b9811a;
+       border:1px solid #34d399;
+       border-radius: 15px;
+        > i {
+          color: #34d399;
+          font-size: 25px;
+        }
+      }
+      .title {
+        display: flex;
+        align-items: start;
+        gap: 6px;
+        flex-direction: column;
+
+        span {
+         color: #f9f9f978;
+        }
+      }
     }
+    /* .close {
+      padding: 5px;
+      transition: background-color var(--transition-main);
+      border-radius: 4px;
+      cursor: pointer;
+      &:hover {
+        background-color: var(--hover-btn);
+        .close-icon {
+          color: #101010;
+        }
+      }
+    } */
+  }
+
+  /* form */
+  & .player-form {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+
+    > div {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      > label {
+        font-size: 12px;
+
+      }
+      > input  {
+        border: none;
+        background-color: transparent;
+        border-bottom: 1px solid var(--hover-btn);
+        padding: 8px 2px;
+        &:focus {
+          border-color: #ff5809;
+        }
+      }
+
+      > select {
+        padding: 8px 3px;
+        background-color: transparent;
+        border: none;
+        border-bottom: 1px solid var(--hover-btn);
+      }
+    }
+  }
 }
+
+
