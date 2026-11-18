@@ -53,7 +53,32 @@ const inputBox = document.querySelector(".input-box") as HTMLElement;
 const inputName = (document.getElementById("player-name") as HTMLInputElement);
 const clearInput = document.querySelector(".clear-input") as HTMLElement;
 const countNum = document.getElementById("count-num") as HTMLElement;
+const playerNumberInput = document.getElementById("player-number") as HTMLInputElement;
 const maxLength = 15; // الحد المسموح به
+
+
+playerNumberInput?.addEventListener("input", () => {
+
+  let value = playerNumberInput.value;
+
+  if(value.length > 2) 
+  {
+    playerNumberInput.value = value.slice(0, 2);
+  }
+
+  const numericValue = parseInt(value);
+  if(numericValue >  99)
+  {
+    playerNumberInput.value = '99';
+  }
+
+  if(numericValue < 0) 
+  {
+    playerNumberInput.value = '1';
+  }
+
+
+})
 
 if(inputName && countNum && clearInput) 
 {
@@ -156,6 +181,8 @@ const handlePlayerFormSubmit = (e: SubmitEvent, modal: HTMLElement): void => {
     if (!validateTeamCapacity(selectedTeam)) {
         return;
     }
+
+    
 
     // 3. (القاعدة الجديدة) التحقق مما إذا كان الرقم محجوزاً مسبقاً لفلاعب آخر في نفس الفريق
     if (isNumberTaken(selectedTeam, inputNumber)) {

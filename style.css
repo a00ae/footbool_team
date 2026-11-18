@@ -28,7 +28,19 @@ input:focus {
   outline: none;
 }
 
-input[type="text"] {
+/* إخفاء الأسهم في متصفحات Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* إخفاء الأسهم في متصفح Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="text"], input[type="number"] {
   border: none;
   background: transparent;
   font-size: 1.2rem;
@@ -243,7 +255,7 @@ input[type="text"] {
   & .player-form {
     display: flex;
     flex-direction: column;
-    gap: 13px;
+    gap: 25px;
 
     .form-group {
       display: flex;
@@ -273,6 +285,7 @@ input[type="text"] {
           border-color: var(--border);
           box-shadow: none;
         }
+        
 
         .clear-input {
           opacity: 0;
