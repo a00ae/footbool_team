@@ -1,0 +1,11 @@
+{
+  "name": "football-tactics-app",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "watch": "node --max-old-space-size=4096 ./node_modules/typescript/bin/tsc --watch"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.5"
+  }
+}
