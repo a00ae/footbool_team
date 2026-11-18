@@ -1,3 +1,5 @@
+
+
 type PlayerPosition = "GK" | "LW" | "CF" | "RW" | "CM" | "LB" | "RB" | "ST";
 
 // بطاقة اللاعب
@@ -182,7 +184,7 @@ const handlePlayerFormSubmit = (e: SubmitEvent, modal: HTMLElement): void => {
         return;
     }
 
-    
+
 
     // 3. (القاعدة الجديدة) التحقق مما إذا كان الرقم محجوزاً مسبقاً لفلاعب آخر في نفس الفريق
     if (isNumberTaken(selectedTeam, inputNumber)) {

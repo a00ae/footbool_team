@@ -1,3 +1,4 @@
+@charset "UTF-8";
 :root {
   --transition-main: 0.3s;
   --hover-btn: #c4c4c4;
@@ -6,7 +7,9 @@
   --shadow: 0px 0px 2px 0 var(--hover-btn);
 }
 
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
@@ -24,28 +27,36 @@ body {
   font-family: "Google Sans", sans-serif;
 }
 
+ul li {
+  list-style: none;
+  margin: 0;
+}
+
 input:focus {
   outline: none;
 }
 
 /* إخفاء الأسهم في متصفحات Chrome, Safari, Edge, Opera */
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
 /* إخفاء الأسهم في متصفح Firefox */
-input[type="number"] {
+input[type=number] {
+  appearance: textfield;
   -moz-appearance: textfield;
 }
 
-input[type="text"], input[type="number"] {
+input[type=text],
+input[type=number] {
   border: none;
   background: transparent;
   font-size: 1.2rem;
   line-height: 1.1;
   width: 90%;
+  color: inherit;
 }
 
 .container {
@@ -56,21 +67,20 @@ input[type="text"], input[type="number"] {
   display: flex;
   flex-direction: column;
   position: relative;
-  & .markz {
-    width: 100%;
-    height: 10px;
-    background-color: #bbb;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1;
-  }
-
-  & > .child {
-    flex-basis: 100%;
-    background-color: transparent;
-  }
+}
+.container .markz {
+  width: 100%;
+  height: 10px;
+  background-color: #bbb;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+.container > .child {
+  flex-basis: 100%;
+  background-color: transparent;
 }
 
 .circle-markz {
@@ -90,6 +100,7 @@ input[type="text"], input[type="number"] {
   background-color: transparent;
   left: 320px;
 }
+
 .svg-top {
   top: 0;
 }
@@ -107,57 +118,55 @@ input[type="text"], input[type="number"] {
   background-color: transparent;
   display: flex;
   flex-direction: column;
-
-  [class*="player-container-"] {
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    align-items: center;
-  }
-
-  & .attacks,
-  .middle,
-  .goalkeeping {
-    position: relative;
-    width: 100%;
-    flex-basis: 100%;
-    user-select: none;
-    .player-container-Mohammed {
-      bottom: -40px;
-      left: 180px;
-    }
-    .player-container-Yousef {
-      top: 140px;
-      left: 620px;
-    }
-    .player-container-Ibrahim {
-      bottom: -40px;
-      right: 180px;
-    }
-  }
-
-  & .middle {
-    .player-container-Yaman {
-      bottom: -10px;
-      left: 380px;
-    }
-    .player-container-Fajr {
-      top: 60px;
-      right: 620px;
-    }
-    .player-container-Hassan {
-      bottom: -10px;
-      right: 380px;
-    }
-  }
-
-  & .goalkeeping {
-    .player-container-Abo {
-      bottom: 10px;
-      left: 625px;
-    }
-  }
+}
+.team [class*=player-container-] {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+.team .attacks,
+.team .middle,
+.team .goalkeeping {
+  position: relative;
+  width: 100%;
+  flex-basis: 100%;
+  user-select: none;
+}
+.team .attacks .player-container-Mohammed,
+.team .middle .player-container-Mohammed,
+.team .goalkeeping .player-container-Mohammed {
+  bottom: -40px;
+  left: 180px;
+}
+.team .attacks .player-container-Yousef,
+.team .middle .player-container-Yousef,
+.team .goalkeeping .player-container-Yousef {
+  top: 140px;
+  left: 620px;
+}
+.team .attacks .player-container-Ibrahim,
+.team .middle .player-container-Ibrahim,
+.team .goalkeeping .player-container-Ibrahim {
+  bottom: -40px;
+  right: 180px;
+}
+.team .middle .player-container-Yaman {
+  bottom: -10px;
+  left: 380px;
+}
+.team .middle .player-container-Fajr {
+  top: 60px;
+  right: 620px;
+}
+.team .middle .player-container-Hassan {
+  bottom: -10px;
+  right: 380px;
+}
+.team .goalkeeping .player-container-Abo {
+  bottom: 10px;
+  left: 625px;
 }
 
 .player {
@@ -169,14 +178,13 @@ input[type="text"], input[type="number"] {
   justify-content: center;
   align-items: center;
   user-select: none;
-  & > span {
-    font-size: 12px;
-  }
+}
+.player > span {
+  font-size: 12px;
+  color: #fff;
 }
 
-/* Add new player button  */
-
-/* <button id="" class="add-my-attacker-btn">Add +</button> */
+/* زر إضافة لاعب جديد */
 .add-my-attacker-btn {
   position: absolute;
   left: 10px;
@@ -192,7 +200,6 @@ input[type="text"], input[type="number"] {
 /* Dailog-Menu */
 .dailog-menu {
   width: 600px;
-  /* height: 400px; */
   padding: 25px;
   background-color: var(--bg-card);
   z-index: 99999;
@@ -201,108 +208,104 @@ input[type="text"], input[type="number"] {
   position: absolute;
   transform: translate(-50%, -40%);
   border-radius: 20px;
-  transition:
-    transform 0.3s,
-    opacity 0.2s;
+  transition: transform var(--transition-main), opacity 0.2s;
   opacity: 0;
   visibility: hidden;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  &.active {
-    transform: translate(-50%, -50%);
-    opacity: 1;
-    visibility: visible;
-  }
-  & .head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    margin-bottom: 40px;
-    border-bottom: 1px solid var(--hover-btn);
-    .left {
-      display: flex;
-      gap: 15px;
-      align-items: center;
-      .football-icon {
-        padding: 15px;
-        background-color: #10b9811a;
-        border: 1px solid var(--border);
-        border-radius: 15px;
-        > i {
-          color: var(--border);
-          font-size: 25px;
-        }
-      }
-      .title {
-        display: flex;
-        align-items: start;
-        gap: 6px;
-        flex-direction: column;
-
-        span {
-          color: #f9f9f978;
-        }
-      }
-    }
-
-  }
-
-  
-
-  /* form */
-  & .player-form {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-       label {
-        font-size: 20px;
-        &::after {
-          content: "*";
-          color: var(--border);
-          padding-left: 5px;
-        }
-      }
-
-      .input-box {
-        background-color: #000;
-        padding: 20px 12px;
-        border: 3px solid transparent;
-        box-shadow: var(--shadow);
-        border-radius: 17px;
-        font-size: 16px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-
-        &:focus-within {
-          border-color: var(--border);
-          box-shadow: none;
-        }
-        
-
-        .clear-input {
-          opacity: 0;
-          &.active {
-            opacity: 1;
-          }
-        }
-        
-
-      }
-
-      > select {
-        padding: 8px 3px;
-        background-color: transparent;
-        border: none;
-        border-bottom: 1px solid var(--hover-btn);
-      }
-    }
-  }
 }
+.dailog-menu.active {
+  transform: translate(-50%, -50%);
+  opacity: 1;
+  visibility: visible;
+}
+.dailog-menu .head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  margin-bottom: 40px;
+  border-bottom: 1px solid var(--hover-btn);
+}
+.dailog-menu .head .left {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+.dailog-menu .head .left .football-icon {
+  padding: 15px;
+  background-color: rgba(16, 185, 129, 0.1019607843);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+}
+.dailog-menu .head .left .football-icon > i {
+  color: var(--border);
+  font-size: 25px;
+}
+.dailog-menu .head .left .title {
+  display: flex;
+  align-items: start;
+  gap: 6px;
+  flex-direction: column;
+}
+.dailog-menu .head .left .title span {
+  color: rgba(249, 249, 249, 0.4705882353);
+}
+
+.dailog-menu .player-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.dailog-menu .player-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.dailog-menu .player-form .form-group label {
+  font-size: 20px;
+  color: #fff;
+}
+.dailog-menu .player-form .form-group label::after {
+  content: "*";
+  color: var(--border);
+  padding-left: 5px;
+}
+.dailog-menu .player-form .form-group .input-box,
+.dailog-menu .player-form .form-group .player-position {
+  background-color: #000;
+  padding: 20px 12px;
+  border: 3px solid transparent;
+  box-shadow: var(--shadow);
+  border-radius: 17px;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.dailog-menu .player-form .form-group .input-box:focus-within,
+.dailog-menu .player-form .form-group .player-position:focus-within {
+  border-color: var(--border);
+  box-shadow: none;
+}
+.dailog-menu .player-form .form-group .input-box .clear-input,
+.dailog-menu .player-form .form-group .player-position .clear-input {
+  opacity: 0;
+  cursor: pointer;
+  color: #71717a;
+  transition: opacity 0.2s;
+}
+.dailog-menu .player-form .form-group .input-box .clear-input.active,
+.dailog-menu .player-form .form-group .player-position .clear-input.active {
+  opacity: 1;
+}
+.dailog-menu .player-form .form-group > select {
+  padding: 8px 3px;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid var(--hover-btn);
+  color: #fff;
+}
+
+/*# sourceMappingURL=style.css.map */
