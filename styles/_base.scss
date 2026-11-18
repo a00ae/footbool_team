@@ -1,0 +1,24 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  height: 100vh;
+  background-color: #101010;
+  overflow: hidden;
+  font-family: "Google Sans", sans-serif;
+}
+
+ul li {
+  list-style: none;
+  margin: 0;
+}

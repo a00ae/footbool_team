@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "scss": "sass styles/main.scss style.css --watch",
     "watch": "node --max-old-space-size=4096 ./node_modules/typescript/bin/tsc --watch"
   },
   "devDependencies": {
+    "sass": "^1.108.2",
     "typescript": "^4.9.5"
   }
 }
