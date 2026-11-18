@@ -2,6 +2,8 @@
   --transition-main: 0.3s;
   --hover-btn: #c4c4c4;
   --bg-card: #1e293b;
+  --border: #34d399;
+  --shadow: 0px 0px 2px 0 var(--hover-btn);
 }
 
 * {
@@ -214,10 +216,10 @@ input[type="text"] {
       .football-icon {
         padding: 15px;
         background-color: #10b9811a;
-        border: 1px solid #34d399;
+        border: 1px solid var(--border);
         border-radius: 15px;
         > i {
-          color: #34d399;
+          color: var(--border);
           font-size: 25px;
         }
       }
@@ -251,23 +253,26 @@ input[type="text"] {
         font-size: 20px;
         &::after {
           content: "*";
-          color: #34d399;
+          color: var(--border);
           padding-left: 5px;
         }
       }
 
       .input-box {
-        background: #000;
-        padding: 8px 6px;
-        border: 1px solid var(--hover-btn);
-        background: #000;
+        background-color: #000;
         padding: 20px 12px;
-        border: 1px solid var(--hover-btn);
+        border: 3px solid transparent;
+        box-shadow: var(--shadow);
         border-radius: 17px;
         font-size: 16px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+
+        &:focus-within {
+          border-color: var(--border);
+          box-shadow: none;
+        }
 
         .clear-input {
           opacity: 0;

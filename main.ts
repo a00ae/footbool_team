@@ -21,6 +21,7 @@ interface MatchData {
 }
 
 
+
 // --- تحديث نموذج البيانات (Interfaces) ---
 type TeamSide = "myTeam" | "opponent";
 type LineType = "attacks" | "middle";
@@ -386,4 +387,3 @@ window.addEventListener("mousedown", (e: MouseEvent) => {
   }
 });
 
-// اغلاق الناذة من خلال النقر على زر ❌
