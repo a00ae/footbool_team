@@ -77,33 +77,37 @@
 
           <div class="form-group">
             <label>Position</label>
-            <div id="player-position"class="player-position">
-                <!-- Icon Avatar / Position Badge -->
-                 <div class="left-pos">
-
-                   <div id="trigger-icon-bg" class="trigger-icon-bg">
-                     <span>ST</span>
-                   </div>
-
-                   <!-- Label Text -->
-                   <div class="desc">
-                     <span id="trigger-title">Striker (main striker)</span>
-                     <span id="trigger-subtitle">Main attack line</span>
-                   </div>
-                 </div>
-
-
-                <!-- Chevron Icon -->
-                <div class="box-selecet">
-                  <i id="trigger-chevron" class="ri-chevron-down-line "></i>
+            <div id="player-position" class="player-position">
+              <!-- Icon Avatar / Position Badge -->
+              <div class="left-pos">
+                <div id="trigger-icon-bg" class="trigger-icon-bg">
+                  <span>ST</span>
                 </div>
 
+                <!-- Label Text -->
+                <div class="desc">
+                  <span id="trigger-title">Striker (main striker)</span>
+                  <span id="trigger-subtitle">Main attack line</span>
+                </div>
+              </div>
+
+              <!-- Chevron Icon -->
+              <div class="box-selecet">
+                <i id="trigger-chevron" class="ri-chevron-down-line"></i>
+              </div>
+
               <div id="drop-down" class="drop-down">
-                <ul  class="drop-down-inner">
-                  <li></li>
+                <div class="drop-down-inner">
+                  <!-- Search / Quick Filter Bar Inside Dropdown -->
 
+                  <div class="box-search">
+                    <i class="ri-search-line"> </i>
+                    <input type="text"  placeholder="Search for center..."  id="dropdown-search-input" autocomplete="off"/>
+                  </div>
 
-                </ul>
+                  <!-- Options List Scrollable Area -->
+
+                </div>
               </div>
             </div>
           </div>

@@ -208,11 +208,50 @@
 
           > .drop-down-inner {
             overflow: hidden;
-            max-height: 150px;
-            overflow-y: auto;
+            // max-height: 150px;
+            // overflow-y: auto;
             background-color: var(--bg-card);
             box-shadow: 0 0 2px 0 rgb(136 137 138 / 37%);
             border-radius: 17px;
+
+            & .box-search {
+              position: relative;
+              margin-bottom: 0.25rem;
+              border-bottom: 1px rgb(30, 41, 59);
+              padding: 0.5rem;
+              > i {
+                position: absolute;
+                left: 1rem;
+                top: 50%;
+                transform: translate(0, -50%) rotate(0) skewX(0) skewY(0)
+                  scaleX(1) scaleY(1);
+                font-size: 0.875rem;
+                line-height: 1.25rem;
+                color: rgb(148, 163, 184);
+              }
+
+              > input {
+                width: 100%;
+                border-radius: 0.75rem;
+                border-width: 1px;
+                border-color: rgb(16, 185, 129, 0.6);
+                background-color: rgb(15, 23, 42, 0.9);
+                padding-top: 0.5rem;
+                padding-bottom: 0.5rem;
+                padding-right: 0.75rem;
+                padding-left: 2rem;
+                font-size: 0.75rem;
+                line-height: 1rem;
+                color: rgb(100, 116, 139);
+                transition-property:
+                  color, background-color, border-color, text-decoration-color,
+                  fill, stroke;
+                transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+                transition-duration: 150ms;
+                outline: 2px solid transparent;
+                outline-offset: 2px;
+              }
+            }
           }
 
           &.visible {
