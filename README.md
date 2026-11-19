@@ -52,14 +52,30 @@ This project provides a lightweight, performant, and reliable tool for football 
 
 ```
 football-tactics-app/
-│
-├── index.html            # Main markup & canvas container
-├── tsconfig.json         # TypeScript compiler configuration (ESNext modules)
-├── .gitignore            # Git exclusion rules (build artifacts, node_modules)
-├── package.json          # Project dependencies & package scripts
-│
-└── src/
-    └── main.ts           # Primary application logic & state handling
+├── src/                        # Application source code (TypeScript / JavaScript)
+│   ├── data/                   # Static datasets and tactical position arrays
+│   │   ├── data.js             # Compiled JavaScript output from data.ts
+│   │   └── data.ts             # Tactical position definitions and constant data
+│   ├── types/                  # TypeScript types and interfaces
+│   │   ├── index.js            # Compiled JavaScript output from index.ts
+│   │   └── index.ts            # Shared types for positions, players, and state
+│   └── main.ts                 # Main entry point, DOM rendering, and event logic
+├── styles/                     # Modular SCSS stylesheets
+│   ├── _base.scss              # Base styles and element resets
+│   ├── _dropdown.scss          # Dropdown menu and position option styles
+│   ├── _inputs.scss            # Form controls and input field styles
+│   ├── _modal.scss             # Modal dialog styles
+│   ├── _pitch.scss             # Football pitch layout and player positioning styles
+│   ├── _variables.scss         # Color variables, maps, and design tokens
+│   └── main.scss               # Main SCSS entry point importing all partials
+├── .gitignore                  # Files and directories ignored by Git
+├── index.html                  # Main HTML entry point and UI markup
+├── package.json                # Project metadata, dependencies, and npm/pnpm scripts
+├── pnpm-lock.yaml              # Exact dependency lockfile for reproducible installs
+├── README.md                   # Project documentation and overview
+├── style.css                   # Compiled CSS stylesheet loaded by the browser
+├── style.css.map               # Source map linking compiled CSS to SCSS sources
+└── tsconfig.json               # TypeScript compiler configuration
 ```
 
 ---
