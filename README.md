@@ -52,14 +52,30 @@ This project provides a lightweight, performant, and reliable tool for football 
 
 ```
 football-tactics-app/
-│
-├── index.html            # Main markup & canvas container
-├── tsconfig.json         # TypeScript compiler configuration (ESNext modules)
-├── .gitignore            # Git exclusion rules (build artifacts, node_modules)
-├── package.json          # Project dependencies & package scripts
-│
-└── src/
-    └── main.ts           # Primary application logic & state handling
+├── src/
+│   ├── data/
+│   │   ├── data.js
+│   │   └── data.ts
+│   ├── types/
+│   │   ├── index.js
+│   │   └── index.ts
+│   └── main.ts
+├── styles/
+│   ├── _base.scss
+│   ├── _dropdown.scss
+│   ├── _inputs.scss
+│   ├── _modal.scss
+│   ├── _pitch.scss
+│   ├── _variables.scss
+│   └── main.scss
+├── .gitignore
+├── index.html
+├── package.json
+├── pnpm-lock.yaml
+├── README.md
+├── style.css
+├── style.css.map
+└── tsconfig.json
 ```
 
 ---
