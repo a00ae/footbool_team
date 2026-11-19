@@ -1,3 +1,7 @@
+@use "sass:map";
+@use 'variables' as *;
+
+
 *,
 *::before,
 *::after {
@@ -16,6 +20,7 @@ body {
   background-color: #101010;
   overflow: hidden;
   font-family: "Google Sans", sans-serif;
+  @include text-style();
 }
 
 ul li {

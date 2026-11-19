@@ -1,4 +1,4 @@
-import { MatchData, PositionOption } from "../types";
+import { MatchData, PositionOption } from "../types/index.js";
 
 export const PLAYER_POSITIONS: PositionOption[] = [
   {

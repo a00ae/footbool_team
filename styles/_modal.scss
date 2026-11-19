@@ -1,10 +1,12 @@
+@use 'variables' as *;
+
 /* زر إضافة لاعب جديد */
 .add-my-attacker-btn {
   position: absolute;
-  left: 10px;
   top: 20px;
+  left: 10px;
   padding: 10px;
-  background-color: white;
+  background-color: var(--text-white);
   z-index: 999;
   cursor: pointer;
   border: none;
@@ -13,23 +15,19 @@
 
 /* Dailog-Menu */
 .dailog-menu {
+  @include flex-box($direction: column, $gap: 20px);
+  position: absolute;
+  top: 50%;
+  left: 50%;
   width: 600px;
   padding: 25px;
   background-color: var(--bg-card);
   z-index: 99999;
-  left: 50%;
-  top: 50%;
-  position: absolute;
-  transform: translate(-50%, -40%);
   border-radius: 20px;
-  transition:
-    transform var(--transition-main),
-    opacity 0.2s;
+  transform: translate(-50%, -40%);
   opacity: 0;
   visibility: hidden;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+  transition: transform var(--transition-main), opacity 0.2s, visibility 0.2s;
 
   &.active {
     transform: translate(-50%, -50%);
@@ -38,38 +36,31 @@
   }
 
   .head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-box($justify: space-between, $align: center);
     padding: 10px 0;
     margin-bottom: 40px;
     border-bottom: 1px solid var(--hover-btn);
 
     .left {
-      display: flex;
-      gap: 15px;
-      align-items: center;
+      @include flex-box($align: center, $gap: 15px);
 
       .football-icon {
+        @include flex-box($justify: center, $align: center);
         padding: 15px;
         background-color: #10b9811a;
         border: 1px solid var(--border);
         border-radius: 15px;
 
         > i {
-          color: var(--border);
-          font-size: 25px;
+          @include text-style($color: var(--border), $size: 25px);
         }
       }
 
       .title {
-        display: flex;
-        align-items: start;
-        gap: 6px;
-        flex-direction: column;
+        @include flex-box($direction: column, $align: flex-start, $gap: 6px);
 
         span {
-          color: #f9f9f978;
+          @include text-style($color: #f9f9f978);
         }
       }
     }
@@ -77,18 +68,13 @@
 
   /* form */
   .player-form {
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
+    @include flex-box($direction: column, $gap: 25px);
 
     .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
+      @include flex-box($direction: column, $gap: 15px);
 
       label {
-        font-size: 20px;
-        color: #fff;
+        @include text-style($color: var(--text-white), $size: var(--fs-lg));
 
         &::after {
           content: "*";
@@ -99,15 +85,13 @@
 
       .input-box,
       .player-position {
-        background-color: #000;
+        @include flex-box($justify: space-between, $align: center);
+        @include text-style($size: 1rem);
         padding: 20px 12px;
+        background-color: #000;
         border: 3px solid transparent;
         box-shadow: var(--shadow);
         border-radius: 17px;
-        font-size: 16px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
 
         &:focus-within {
           border-color: var(--border);
@@ -115,9 +99,9 @@
         }
 
         .clear-input {
+          @include text-style($color: #71717a);
           opacity: 0;
           cursor: pointer;
-          color: #71717a;
           transition: opacity 0.2s;
 
           &.active {
@@ -127,72 +111,58 @@
       }
 
       .player-position {
+        @include flex-box($justify: space-between, $align: center, $gap: 10px);
         position: relative;
-        padding: 11px 12px;
-        display: flex;
         width: 100%;
+        padding: 11px 12px;
         cursor: pointer;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
 
         .left-pos {
-          display: flex;
-          align-items: center;
-          gap: 10px;
+          @include flex-box($align: center, $gap: 10px);
           overflow: hidden;
-          & .trigger-icon-bg {
+
+          .trigger-icon-bg {
+            @include flex-box($justify: center, $align: center);
+            @include text-style($color: rgb(251, 191, 36), $size: var(--fs-sm), $weight: var(--fw-bold));
+            flex-shrink: 0;
             width: 2.5rem;
             height: 2.5rem;
-            display: flex;
-            flex-shrink: 0;
-            align-items: center;
-            justify-content: center;
             border-radius: 0.75rem;
             border: 1px solid rgb(245, 158, 11, 0.3);
             background-color: rgb(245, 158, 11, 0.1);
-            font-size: 0.75rem;
             line-height: 1rem;
-            color: rgb(251, 191, 36);
             transition: all cubic-bezier(0.4, 0, 0.2, 1) 300ms;
           }
-          & .desc {
-            display: flex;
-            flex-direction: column;
+
+          .desc {
+            @include flex-box($direction: column);
+            @include text-style($size: 0.7rem);
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
             text-align: left;
-            font-size: 0.7rem;
-            & span:nth-child(2) {
-              color: var(--color-description);
+
+            span:nth-child(2) {
+              @include text-style($color: var(--color-description), $size: 0.7rem);
             }
           }
         }
 
-        & .box-selecet {
+        .box-selecet {
+          @include flex-box($justify: center, $align: center);
+          flex-shrink: 0;
           width: 2.5rem;
           height: 2.5rem;
           border-radius: 0.5rem;
-          display: flex;
-          flex-shrink: 0;
-          align-items: center;
-          justify-content: center;
           background-color: rgb(30, 41, 59);
-          color: rgb(52, 211, 153);
           transition: all cubic-bezier(0.4, 0, 0.2, 1) 300ms;
 
-          & i {
-            font-size: 1.125rem;
+          i {
+            @include text-style($color: var(--emerald-accent), $size: 1.125rem);
             line-height: 1.75rem;
-            transition-property: transform;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 300ms;
+            transition: transform cubic-bezier(0.4, 0, 0.2, 1) 300ms;
           }
         }
-
-        
-
       }
     }
   }

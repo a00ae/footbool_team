@@ -5,4 +5,39 @@
   --border: #34d399;
   --shadow: 0px 0px 2px 0 var(--hover-btn);
   --color-description: #61616182;
+
+  /* ألوان متكررة في القائمة المنسدلة */
+  --emerald-accent: #34d399;
+  --emerald-hover-bg: rgba(16, 185, 129, 0.1);
+  --emerald-border: rgb(16, 185, 129);
+  --text-light: #cbd5e1;
+  --text-white: #ffffff;
+  --text-muted: #94a3b8;
+
+  /* أوزان الخط (Font Weights) */
+  --fw-sm: 400;
+  --fw-main: 500;
+  --fw-bold: 700;
+
+  /* أحجام الخطوط بوحدة rem (Font Sizes) */
+  --fs-sm: 0.75rem;   /* 12px */
+  --fs-md: 0.875rem;  /* 14px */
+  --fs-lg: 1.25rem;   /* 20px */
+  --fs-xl: 2.5rem;    /* 40px */
+}
+
+@mixin flex-box($direction: row, $justify: flex-start, $align: stretch, $gap: 0, $wrap: nowrap) 
+{
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+  flex-wrap: $wrap;
+}
+
+@mixin text-style($color: #fff, $size: var(--fs-md), $weight: var(--fw-main)) {
+  color: $color;
+  font-size: $size;
+  font-weight: $weight;
 }
