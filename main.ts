@@ -56,6 +56,8 @@ const inputName = (document.getElementById("player-name") as HTMLInputElement);
 const clearInput = document.querySelector(".clear-input") as HTMLElement;
 const countNum = document.getElementById("count-num") as HTMLElement;
 const playerNumberInput = document.getElementById("player-number") as HTMLInputElement;
+const inputPosition = document.getElementById("player-position") as HTMLSelectElement;
+const dropDown = document.getElementById("drop-down") as HTMLElement;
 const maxLength = 15; // الحد المسموح به
 
 
@@ -119,6 +121,10 @@ if(inputName && countNum && clearInput)
     })
 }
 
+inputPosition?.addEventListener("click", () => {
+  dropDown.classList.toggle("visible");
+})
+
 
 // 2. التحقق من وجود الفورم لضمان عدم حدوث أخطاء
 if (form && dailogMenu) {
@@ -159,64 +165,6 @@ const isNumberTaken = (teamName: TeamSide, shirtNumber: number): boolean => {
 
 
 
-//  إرسال النموذج والتحقق من الشروط ---
-const handlePlayerFormSubmit = (e: SubmitEvent, modal: HTMLElement): void => {
-    e.preventDefault();
-
-    // const inputName = (document.getElementById("player-name") as HTMLInputElement);
-    const inputNumber = parseInt((document.getElementById("player-number") as HTMLInputElement).value, 10);
-    const inputPosition = (document.getElementById("player-position") as HTMLSelectElement).value as PlayerPosition;
-    const inputColor = (document.getElementById("jersey-color") as HTMLInputElement).value;
-    const selectedTeam = (document.getElementById("player-team") as HTMLSelectElement).value as TeamSide;
-    const selectedLine = (document.getElementById("player-line") as HTMLSelectElement).value as LineType;
-
-
-
-
-    // 1. التحقق من النطاق الصحيح لرقم القميص (من 1 إلى 99)
-    if (inputNumber < 1 || inputNumber > 99) {
-        alert("رقم القميص يجب أن يكون بين 1 و 99 حصراً!");
-        return;
-    }
-
-    // 2. التحقق من الحد الأقصى لعدد اللاعبين (11 لاعب)
-    if (!validateTeamCapacity(selectedTeam)) {
-        return;
-    }
-
-
-
-    // 3. (القاعدة الجديدة) التحقق مما إذا كان الرقم محجوزاً مسبقاً لفلاعب آخر في نفس الفريق
-    if (isNumberTaken(selectedTeam, inputNumber)) {
-        alert(`عذراً، رقم القميص (${inputNumber}) محجوز مسبقاً للاعب آخر في هذا الفريق! يرجى اختيار رقم مختلف.`);
-        return;
-    }
-
-    // 4. منع تكرار لون القميص بين الفريقين
-    const oppositeTeam: TeamSide = selectedTeam === "myTeam" ? "opponent" : "myTeam";
-    if (inputColor.toLowerCase() === teamColors[oppositeTeam].toLowerCase()) {
-        alert("عذراً، هذا اللون مستخدم بالفعل من قبل الفريق الآخر! يرجى اختيار لون مختلف.");
-        return;
-    }
-
-    // حفظ اللون للفريق الحالي
-    teamColors[selectedTeam] = inputColor;
-
-    // 5. إنشاء كائن اللاعب الجديد وإضافته
-    const newPlayer: Player = {
-        id: Math.random(),
-        name: inputName.value,
-        number: inputNumber,
-        position: inputPosition
-    };
-
-    addNewPlayer(selectedTeam, selectedLine, newPlayer);
-    renderPlayers(matchData[selectedTeam][selectedLine], `${selectedTeam}-${selectedLine}`);
-
-    // إغلاق النافذة وإعادة تعيين النموذج
-    modal.classList.remove("active");
-    (document.getElementById("add-player-form") as HTMLFormElement).reset();
-};
  
 
 
@@ -416,3 +364,62 @@ window.addEventListener("mousedown", (e: MouseEvent) => {
   }
 });
 
+
+//  إرسال النموذج والتحقق من الشروط ---
+const handlePlayerFormSubmit = (e: SubmitEvent, modal: HTMLElement): void => {
+    e.preventDefault();
+
+    // const inputName = (document.getElementById("player-name") as HTMLInputElement);
+    const inputNumber = parseInt((document.getElementById("player-number") as HTMLInputElement).value, 10);
+    
+    const inputColor = (document.getElementById("jersey-color") as HTMLInputElement).value;
+    const selectedTeam = (document.getElementById("player-team") as HTMLSelectElement).value as TeamSide;
+    const selectedLine = (document.getElementById("player-line") as HTMLSelectElement).value as LineType;
+
+
+
+
+    // 1. التحقق من النطاق الصحيح لرقم القميص (من 1 إلى 99)
+    if (inputNumber < 1 || inputNumber > 99) {
+        alert("رقم القميص يجب أن يكون بين 1 و 99 حصراً!");
+        return;
+    }
+
+    // 2. التحقق من الحد الأقصى لعدد اللاعبين (11 لاعب)
+    if (!validateTeamCapacity(selectedTeam)) {
+        return;
+    }
+
+
+
+    // 3. (القاعدة الجديدة) التحقق مما إذا كان الرقم محجوزاً مسبقاً لفلاعب آخر في نفس الفريق
+    if (isNumberTaken(selectedTeam, inputNumber)) {
+        alert(`عذراً، رقم القميص (${inputNumber}) محجوز مسبقاً للاعب آخر في هذا الفريق! يرجى اختيار رقم مختلف.`);
+        return;
+    }
+
+    // 4. منع تكرار لون القميص بين الفريقين
+    const oppositeTeam: TeamSide = selectedTeam === "myTeam" ? "opponent" : "myTeam";
+    if (inputColor.toLowerCase() === teamColors[oppositeTeam].toLowerCase()) {
+        alert("عذراً، هذا اللون مستخدم بالفعل من قبل الفريق الآخر! يرجى اختيار لون مختلف.");
+        return;
+    }
+
+    // حفظ اللون للفريق الحالي
+    teamColors[selectedTeam] = inputColor;
+
+    // 5. إنشاء كائن اللاعب الجديد وإضافته
+    const newPlayer: Player = {
+        id: Math.random(),
+        name: inputName.value,
+        number: inputNumber,
+        position: inputPosition.value as PlayerPosition
+    };
+
+    addNewPlayer(selectedTeam, selectedLine, newPlayer);
+    renderPlayers(matchData[selectedTeam][selectedLine], `${selectedTeam}-${selectedLine}`);
+
+    // إغلاق النافذة وإعادة تعيين النموذج
+    modal.classList.remove("active");
+    (document.getElementById("add-player-form") as HTMLFormElement).reset();
+};

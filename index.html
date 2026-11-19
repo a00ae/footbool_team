@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./style.css" />
     <!-- remaix icon -->
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@4.6.0/fonts/remixicon.css"
@@ -31,9 +31,7 @@
             <div class="title">
               <h3 id="add-title"></h3>
               <span id="add-desc"></span>
-
             </div>
-            
           </div>
           <!-- <div class="close">
             <i class="ri-close-line close-icon"></i>
@@ -44,52 +42,70 @@
         <form id="add-player-form" class="player-form">
           <!-- اسم اللاعب -->
           <div class="form-group">
-            <label >Player Name</label>
+            <label>Player Name</label>
             <div class="input-box">
               <input
-              autocomplete="off"
+                autocomplete="off"
                 type="text"
                 id="player-name"
-                placeholder="e.g. Player"
-                required maxlength="15" minlength="2"/>
+                placeholder="e.g. Ibo"
+                required
+                maxlength="15"
+                minlength="2" />
               <span id="count-num"></span>
-                <i class="ri-close-line clear-input" ></i>
+              <i class="ri-close-line clear-input"></i>
             </div>
           </div>
 
           <!-- رقم القميص -->
 
-
-
           <div class="form-group">
-            <label >Shirt Number</label>
+            <label>Shirt Number</label>
             <div class="input-box">
-
               <input
-              autocomplete="off"
+                autocomplete="off"
+                placeholder="ex: 10"
                 type="number"
                 id="player-number"
                 min="1"
                 max="99"
                 required />
-                <span id="count-num"></span>
-                <i class="ri-close-line clear-input" ></i>
-
+              <span id="count-num"></span>
+              <i class="ri-close-line clear-input"></i>
             </div>
           </div>
 
-
           <div class="form-group">
-            <label >Position</label>
-            <div class="player-position">
-              <span>select</span>
-              <ul class="drop-down">
-                <li></li>
-              </ul>
+            <label>Position</label>
+            <div id="player-position"class="player-position">
+                <!-- Icon Avatar / Position Badge -->
+                 <div class="left-pos">
+
+                   <div id="trigger-icon-bg" class="trigger-icon-bg">
+                     <span>ST</span>
+                   </div>
+
+                   <!-- Label Text -->
+                   <div class="desc">
+                     <span id="trigger-title">Striker (main striker)</span>
+                     <span id="trigger-subtitle">Main attack line</span>
+                   </div>
+                 </div>
 
 
+                <!-- Chevron Icon -->
+                <div class="box-selecet">
+                  <i id="trigger-chevron" class="ri-chevron-down-line "></i>
+                </div>
+
+              <div id="drop-down" class="drop-down">
+                <ul  class="drop-down-inner">
+                  <li></li>
+
+
+                </ul>
+              </div>
             </div>
-
           </div>
 
           <!-- المركز -->
@@ -132,7 +148,7 @@
             <label for="jersey-color">Jersey Color</label>
             <input type="color" id="jersey-color" value="#3b82f6" />
           </div> -->
-<!-- 
+          <!-- 
           <div class="form-actions">
             <button type="button" id="cancel-btn" class="btn-secondary">
               Cancel
