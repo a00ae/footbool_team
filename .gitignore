@@ -1,7 +1,7 @@
-# files
-main.js
-data.js
-index.js
+# Compiled JS files inside src
+src/main.js
+src/data/data.js
+src/types/index.js
 
 # node modules file
 node_modules/
