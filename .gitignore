@@ -1,3 +1,7 @@
-main.js
+# files
+./main.js
+./data/data.js
+./types/index.js
 
+# node modules file
 node_modules/
