@@ -1,4 +1,5 @@
 export type PlayerPosition = "GK" | "LW" | "CF" | "RW" | "CM" | "LB" | "RB" | "ST";
+type PlayerFoot = "R" | "L";
 export type PositionColor = "amber" | "blue" | "cyan" | "emerald";
 export interface PositionOption {
   value: string;
@@ -14,6 +15,8 @@ export interface Player {
   number: number;
   name: string;
   position: PlayerPosition;
+  rating: string;
+  foot: PlayerFoot;
 }
 // هيكل كل طاقم
 export interface TeamLines {
