@@ -112,6 +112,17 @@
   }
 }
 
+
+.player-center {
+  width: 100%;
+  @include flex-box($justify: space-between, $align: center);
+  & .position-box {
+    // width: 25px;
+    // height: 25px;
+    .svg-football {width: 18px; height: 18px; }
+  }
+}
+
 .player {
   @include flex-box($justify: center, $align: center);
   width: 30px;

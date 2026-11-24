@@ -6,6 +6,10 @@
   --border: #34d399;
   --shadow: 0px 0px 2px 0 var(--hover-btn);
   --color-description: #61616182;
+  --emerald-accent: #34d399;
+  --gold-accent: #fbbf24;
+  --blue-accent: #60a5fa;
+  --cyan-accent: #22d3ee;
   /* ألوان متكررة في القائمة المنسدلة */
   --emerald-accent: #34d399;
   --emerald-hover-bg: rgba(16, 185, 129, 0.1);
@@ -13,6 +17,7 @@
   --text-light: #cbd5e1;
   --text-white: #ffffff;
   --text-muted: #94a3b8;
+  --card-accent: #fbbf24;
   /* أوزان الخط (Font Weights) */
   --fw-sm: 400;
   --fw-main: 500;
@@ -187,6 +192,20 @@ input[type=number] {
 .team .goalkeeping .player-container-Abo {
   bottom: 10px;
   left: 625px;
+}
+
+.player-center {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+.player-center .position-box .svg-football {
+  width: 18px;
+  height: 18px;
 }
 
 .player {
