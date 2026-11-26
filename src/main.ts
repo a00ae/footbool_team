@@ -196,10 +196,12 @@ const makeDraggable = (element: HTMLElement): void => {
     currentY = clientY - startY;
 
     element.style.transform = `translate(${currentX}px, ${currentY}px)`;
+    element.style.zIndex = "9999";
   }
 
   function endDrag(): void {
     isDragging = false;
+    element.style.zIndex = '';
   }
 
   // أحداث الماوس
@@ -244,53 +246,79 @@ const renderPlayers = (PlayerArray: Player[], containerId: string): void => {
     const formattedName = player.name.replace(/\s+/g, "-");
     playerContainer.classList.add(`player-container-${formattedName}`);
 
-    let foot = player.foot === "R" ? "Rehit Football" : "Left Football";
-
+    let foot = player.foot === "R" ? "Right" : "Left";
 
     playerContainer.innerHTML += `
-    <div class="player-center">
-      <div class="raiting-box">
-        <span class="raiting">${player.rating}</span>
-        <span>${player.position}</span> 
-    
-      </div>
-        <div class="position-box">
-          <div class="foot">
-            <svg class="svg-football" style="color: var(--card-accent);" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1.5a2.5 2.5 0 0 0-2.1-2.47l-4.4-.73a3 3 0 0 1-2.1-1.46L9.5 8.5A2 2 0 0 0 7.7 7.5H6a2 2 0 0 0-2 2V16Z"/>
-                <path d="M8 20v-2M12 20v-2M16 20v-2"/>
-            </svg> 
 
-            <!-- شارة القدم المفضلة -->
-            <span > ${player.foot} </span>
+            <!-- Rating -->
+            <div class="player-rating">
+              <!-- info -->
+              <div class="player-info">
+                <p>${player.rating}</p>
+                <div class="box-position">
+                  <span>${player.position}</span>
+                </div>
+              </div>
 
-          </div>
-          <p>${foot} </p>
-        </div>
-      </div>
-    `;
+              <!-- Image + Name -->
+              <div class="player-identity">
+                <!-- Foot -->
+                <div class="foot">
+                  <div class="foot-top">
+                    <svg
+                      class="svg-football"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path
+                        d="M4 16v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-1.5a2.5 2.5 0 0 0-2.1-2.47l-4.4-.73a3 3 0 0 1-2.1-1.46L9.5 8.5A2 2 0 0 0 7.7 7.5H6a2 2 0 0 0-2 2V16Z" />
+                      <path d="M8 20v-2M12 20v-2M16 20v-2" />
+                    </svg>
+
+                    <span>${player.foot}</span>
+                  </div>
+                  <div class="foot-bottom">
+                    <span>${foot} Foot</span>
+                  </div>
+
+                  <div class="player-label">
+
+                    <!-- <div class="img">
+                      <img src="./public/player-img.jpg" alt="" />
+                    </div> -->
+
+                    <div class="desc">
+                      <span class="number">#${player.number}</span>
+                      <span class="name">${player.name}</span>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
 
 
-    const stylePlayer: Partial<CSSStyleDeclaration> = {
-      display: "flex",
-      flexDirection: "column",
-      gap: "10px",
-      position: "absolute",
-      width: "180px",
-      height: "110px",
-      zIndex: "10",
-      cursor: "pointer",
-      borderRadius: "10px",
-      backgroundColor: "var(--bg-card)"
-    };
+     `;
 
+    // const stylePlayer: Partial<CSSStyleDeclaration> = {
+    //   display: "flex",
+    //   flexDirection: "row",
+    //   justifyContent: "space-between",
+    //   alignItems: "center",
+    //   gap: "10px",
+    //   position: "absolute",
+    //   width: "250px",
+    //   zIndex: "10",
+    //   cursor: "pointer",
+    //   borderRadius: "10px",
+    //   backgroundColor: player.captain ? "red" : "var(--bg-card)",
+    //   padding:  "var(--space-sm)"
+    // };
 
-
-
-
-
-    Object.assign(playerContainer.style, stylePlayer);
-
+    // Object.assign(playerContainer.style, stylePlayer);
 
     parentContainer.appendChild(playerContainer);
     makeDraggable(playerContainer);
@@ -404,7 +432,7 @@ const handlePlayerFormSubmit = (e: SubmitEvent, modal: HTMLElement): void => {
     name: inputName.value,
     number: inputNumber,
     position: inputPosition.value as PlayerPosition,
-    rating: 99..toString(),
+    rating: (99).toString(),
     foot: "R",
   };
 

@@ -9,16 +9,9 @@
   --gold-accent: #fbbf24;
   --blue-accent: #60a5fa;
   --cyan-accent: #22d3ee;
-
-  /* ألوان متكررة في القائمة المنسدلة */
-  --emerald-accent: #34d399;
-  --emerald-hover-bg: rgba(16, 185, 129, 0.1);
-  --emerald-border: rgb(16, 185, 129);
-  --text-light: #cbd5e1;
-  --text-white: #ffffff;
-  --text-muted: #94a3b8;
-        --card-accent: #fbbf24;
-
+  --green-st: #34d39954;
+  --white-main: #fff;
+  --color-foot: #a8a8a8;
   /* أوزان الخط (Font Weights) */
   --fw-sm: 400;
   --fw-main: 500;
@@ -29,25 +22,43 @@
   --fs-md: 0.875rem; /* 14px */
   --fs-lg: 1.25rem; /* 20px */
   --fs-xl: 2.5rem; /* 40px */
+
+  /* عرض الهوامش الكروت */
+
+  --space-xl: 40px;
+  --space-lg: 30px;
+  --space-md: 20px;
+  --space-sm: 10px;
+  --space-xs: 5px;
+  --space-xxs: 2px;
+
 }
 
 @mixin flex-box(
   $direction: row,
   $justify: flex-start,
   $align: stretch,
-  $gap: 0,
+  $gap: null,
   $wrap: nowrap
 ) {
   display: flex;
   flex-direction: $direction;
   justify-content: $justify;
   align-items: $align;
-  gap: $gap;
+  @if $gap == null {
+  gap: 0;
+  }@else {
+    gap: var(--space-#{$gap})
+  }
+  
   flex-wrap: $wrap;
 }
 
-@mixin text-style($color: #fff, $size: var(--fs-md), $weight: var(--fw-main)) {
-  color: $color;
-  font-size: $size;
-  font-weight: $weight;
+@mixin text-style($color: white-main, $size: md, $weight: main) {
+  
+  @if $color != white-main {
+    color: var(--#{$color});
+  }
+  font-size: var(--fs-#{$size});
+  font-weight: var(--fw-#{$weight});
 }

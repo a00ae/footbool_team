@@ -1,4 +1,4 @@
-@use 'variables' as *;
+@use "variables" as *;
 
 .container {
   @include flex-box($direction: column);
@@ -57,8 +57,74 @@
   height: 100vh;
 
   [class*="player-container-"] {
-    @include flex-box($direction: column, $align: center, $gap: 10px);
     position: absolute;
+    background-color: var(--bg-card);
+    padding: var(--space-sm);
+    border-radius: var(--space-sm);
+    z-index: 10;
+    cursor: pointer;
+
+    & .player-rating {
+      @include flex-box($justify: space-between, $gap: xl);
+
+      & .player-info {
+        @include flex-box(column, center);
+        > p {
+          @include text-style($size: xl);
+        }
+        .box-position {
+          text-align: center;
+          span {
+            padding: calc(var(--space-xs) - 2px);
+            background-color: var(--green-st);
+            display: inline-block;
+            border: 1px solid var(--emerald-accent);
+            border-radius: calc(var(--space-xs) - 2px);
+          }
+        }
+      }
+
+      .player-identity {
+        width: 100%;
+        @include flex-box(column, center, center, xs);
+
+        & .foot {
+          @include flex-box(column, center, center, xxs);
+          &-top {
+            @include flex-box($justify: center, $align: center, $gap: xs);
+            .svg-football {
+              width: 18px;
+              height: 18px;
+              color: var(--emerald-accent);
+            }
+          }
+          &-bottom {
+            @include text-style(color-foot, sm);
+          }
+        }
+
+        & .player-label {
+          @include flex-box(column, center, center, xxs);
+        }
+        & .img {
+          width: 25px;
+          height: 25px;
+          overflow: hidden;
+          border-radius: 50%;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+
+        & .desc {
+          @include flex-box(column, center, center);
+          .number {
+            @include text-style(color-foot, sm);
+          }
+        }
+      }
+    }
   }
 
   .attacks,
@@ -109,29 +175,5 @@
       bottom: 10px;
       left: 625px;
     }
-  }
-}
-
-
-.player-center {
-  width: 100%;
-  @include flex-box($justify: space-between, $align: center);
-  & .position-box {
-    // width: 25px;
-    // height: 25px;
-    .svg-football {width: 18px; height: 18px; }
-  }
-}
-
-.player {
-  @include flex-box($justify: center, $align: center);
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #000;
-  user-select: none;
-
-  & > span {
-    @include text-style($size: var(--fs-sm));
   }
 }
