@@ -10,14 +10,9 @@
   --gold-accent: #fbbf24;
   --blue-accent: #60a5fa;
   --cyan-accent: #22d3ee;
-  /* ألوان متكررة في القائمة المنسدلة */
-  --emerald-accent: #34d399;
-  --emerald-hover-bg: rgba(16, 185, 129, 0.1);
-  --emerald-border: rgb(16, 185, 129);
-  --text-light: #cbd5e1;
-  --text-white: #ffffff;
-  --text-muted: #94a3b8;
-  --card-accent: #fbbf24;
+  --green-st: #34d39954;
+  --white-main: #fff;
+  --color-foot: #a8a8a8;
   /* أوزان الخط (Font Weights) */
   --fw-sm: 400;
   --fw-main: 500;
@@ -27,6 +22,13 @@
   --fs-md: 0.875rem; /* 14px */
   --fs-lg: 1.25rem; /* 20px */
   --fs-xl: 2.5rem; /* 40px */
+  /* عرض الهوامش الكروت */
+  --space-xl: 40px;
+  --space-lg: 30px;
+  --space-md: 20px;
+  --space-sm: 10px;
+  --space-xs: 5px;
+  --space-xxs: 2px;
 }
 
 *,
@@ -47,7 +49,6 @@ body {
   background-color: #101010;
   overflow: hidden;
   font-family: "Google Sans", sans-serif;
-  color: #fff;
   font-size: var(--fs-md);
   font-weight: var(--fw-main);
 }
@@ -149,13 +150,108 @@ input[type=number] {
   height: 100vh;
 }
 .team [class*=player-container-] {
+  position: absolute;
+  background-color: var(--bg-card);
+  padding: var(--space-sm);
+  border-radius: var(--space-sm);
+  z-index: 10;
+  cursor: pointer;
+}
+.team [class*=player-container-] .player-rating {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  gap: var(--space-xl);
+  flex-wrap: nowrap;
+}
+.team [class*=player-container-] .player-rating .player-info {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  gap: 10px;
+  justify-content: center;
+  align-items: stretch;
+  gap: 0;
   flex-wrap: nowrap;
-  position: absolute;
+}
+.team [class*=player-container-] .player-rating .player-info > p {
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-main);
+}
+.team [class*=player-container-] .player-rating .player-info .box-position {
+  text-align: center;
+}
+.team [class*=player-container-] .player-rating .player-info .box-position span {
+  padding: calc(var(--space-xs) - 2px);
+  background-color: var(--green-st);
+  display: inline-block;
+  border: 1px solid var(--emerald-accent);
+  border-radius: calc(var(--space-xs) - 2px);
+}
+.team [class*=player-container-] .player-rating .player-identity {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-wrap: nowrap;
+}
+.team [class*=player-container-] .player-rating .player-identity .foot {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xxs);
+  flex-wrap: nowrap;
+}
+.team [class*=player-container-] .player-rating .player-identity .foot-top {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-wrap: nowrap;
+}
+.team [class*=player-container-] .player-rating .player-identity .foot-top .svg-football {
+  width: 18px;
+  height: 18px;
+  color: var(--emerald-accent);
+}
+.team [class*=player-container-] .player-rating .player-identity .foot-bottom {
+  color: var(--color-foot);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-main);
+}
+.team [class*=player-container-] .player-rating .player-identity .player-label {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-xxs);
+  flex-wrap: nowrap;
+}
+.team [class*=player-container-] .player-rating .player-identity .img {
+  width: 25px;
+  height: 25px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.team [class*=player-container-] .player-rating .player-identity .img img {
+  width: 100%;
+  height: 100%;
+}
+.team [class*=player-container-] .player-rating .player-identity .desc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-wrap: nowrap;
+}
+.team [class*=player-container-] .player-rating .player-identity .desc .number {
+  color: var(--color-foot);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-main);
 }
 .team .attacks,
 .team .middle,
@@ -194,46 +290,13 @@ input[type=number] {
   left: 625px;
 }
 
-.player-center {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  gap: 0;
-  flex-wrap: nowrap;
-}
-.player-center .position-box .svg-football {
-  width: 18px;
-  height: 18px;
-}
-
-.player {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  gap: 0;
-  flex-wrap: nowrap;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  background: #000;
-  user-select: none;
-}
-.player > span {
-  color: #fff;
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-main);
-}
-
 /* زر إضافة لاعب جديد */
 .add-my-attacker-btn {
   position: absolute;
   top: 20px;
   left: 10px;
   padding: 10px;
-  background-color: var(--text-white);
+  background-color: var(--bg-card);
   z-index: 999;
   cursor: pointer;
   border: none;
@@ -246,7 +309,7 @@ input[type=number] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 20px;
+  gap: var(--space-md);
   flex-wrap: nowrap;
   position: absolute;
   top: 50%;
@@ -254,7 +317,7 @@ input[type=number] {
   width: 600px;
   padding: 25px;
   background-color: var(--bg-card);
-  z-index: 99999;
+  z-index: 99999999;
   border-radius: 20px;
   transform: translate(-50%, -40%);
   opacity: 0;
@@ -282,7 +345,7 @@ input[type=number] {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 15px;
+  gap: var(--space-sm);
   flex-wrap: nowrap;
 }
 .dailog-menu .head .left .football-icon {
@@ -298,8 +361,8 @@ input[type=number] {
   border-radius: 15px;
 }
 .dailog-menu .head .left .football-icon > i {
-  color: var(--border);
-  font-size: 25px;
+  color: var(--var(--border));
+  font-size: var(--fs-25px);
   font-weight: var(--fw-main);
 }
 .dailog-menu .head .left .title {
@@ -307,11 +370,11 @@ input[type=number] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  gap: 6px;
+  gap: var(--space-xs);
   flex-wrap: nowrap;
 }
 .dailog-menu .head .left .title span {
-  color: rgba(249, 249, 249, 0.4705882353);
+  color: var(--rgba(249, 249, 249, 0.4705882353));
   font-size: var(--fs-md);
   font-weight: var(--fw-main);
 }
@@ -323,7 +386,7 @@ input[type=number] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 25px;
+  gap: var(--space-md);
   flex-wrap: nowrap;
 }
 .dailog-menu .player-form .form-group {
@@ -331,11 +394,10 @@ input[type=number] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 15px;
+  gap: var(--space-sm);
   flex-wrap: nowrap;
 }
 .dailog-menu .player-form .form-group label {
-  color: var(--text-white);
   font-size: var(--fs-lg);
   font-weight: var(--fw-main);
 }
@@ -352,8 +414,7 @@ input[type=number] {
   align-items: center;
   gap: 0;
   flex-wrap: nowrap;
-  color: #fff;
-  font-size: 1rem;
+  font-size: var(--fs-1rem);
   font-weight: var(--fw-main);
   padding: 20px 12px;
   background-color: #000;
@@ -368,7 +429,7 @@ input[type=number] {
 }
 .dailog-menu .player-form .form-group .input-box .clear-input,
 .dailog-menu .player-form .form-group .player-position .clear-input {
-  color: #71717a;
+  color: var(--#71717a);
   font-size: var(--fs-md);
   font-weight: var(--fw-main);
   opacity: 0;
@@ -384,7 +445,7 @@ input[type=number] {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-sm);
   flex-wrap: nowrap;
   position: relative;
   width: 100%;
@@ -396,7 +457,7 @@ input[type=number] {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 10px;
+  gap: var(--space-sm);
   flex-wrap: nowrap;
   overflow: hidden;
 }
@@ -407,9 +468,9 @@ input[type=number] {
   align-items: center;
   gap: 0;
   flex-wrap: nowrap;
-  color: rgb(251, 191, 36);
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
+  color: var(--rgb(251, 191, 36));
+  font-size: var(--fs-var(--fs-sm));
+  font-weight: var(--fw-var(--fw-bold));
   flex-shrink: 0;
   width: 2.5rem;
   height: 2.5rem;
@@ -426,8 +487,7 @@ input[type=number] {
   align-items: stretch;
   gap: 0;
   flex-wrap: nowrap;
-  color: #fff;
-  font-size: 0.7rem;
+  font-size: var(--fs-0.7rem);
   font-weight: var(--fw-main);
   overflow: hidden;
   text-overflow: ellipsis;
@@ -435,8 +495,8 @@ input[type=number] {
   text-align: left;
 }
 .dailog-menu .player-form .form-group .player-position .left-pos .desc span:nth-child(2) {
-  color: var(--color-description);
-  font-size: 0.7rem;
+  color: var(--var(--color-description));
+  font-size: var(--fs-0.7rem);
   font-weight: var(--fw-main);
 }
 .dailog-menu .player-form .form-group .player-position .box-selecet {
@@ -454,8 +514,8 @@ input[type=number] {
   transition: all cubic-bezier(0.4, 0, 0.2, 1) 300ms;
 }
 .dailog-menu .player-form .form-group .player-position .box-selecet i {
-  color: var(--emerald-accent);
-  font-size: 1.125rem;
+  color: var(--var(--emerald-accent));
+  font-size: var(--fs-1.125rem);
   font-weight: var(--fw-main);
   line-height: 1.75rem;
   transition: transform cubic-bezier(0.4, 0, 0.2, 1) 300ms;
@@ -486,8 +546,8 @@ input[type=number] {
   padding: 0.5rem;
 }
 & .drop-down > .drop-down-inner .box-search > i {
-  color: var(--text-muted);
-  font-size: var(--fs-md);
+  color: var(--var(--text-muted));
+  font-size: var(--fs-var(--fs-md));
   font-weight: var(--fw-main);
   position: absolute;
   left: 1rem;
@@ -497,8 +557,8 @@ input[type=number] {
   pointer-events: none;
 }
 & .drop-down > .drop-down-inner .box-search > input {
-  color: #e2e8f0;
-  font-size: var(--fs-sm);
+  color: var(--#e2e8f0);
+  font-size: var(--fs-var(--fs-sm));
   font-weight: var(--fw-main);
   width: 100%;
   padding: 0.5rem 0.75rem 0.5rem 2rem;
@@ -527,7 +587,7 @@ input[type=number] {
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
-  gap: 0.25rem;
+  gap: var(--space-0.25rem);
   flex-wrap: nowrap;
   max-height: 15rem;
   overflow-y: auto;
@@ -539,9 +599,9 @@ input[type=number] {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  gap: 0.5rem;
+  gap: var(--space-0.5rem);
   flex-wrap: nowrap;
-  color: var(--text-light);
+  color: var(--var(--text-light));
   font-size: var(--fs-md);
   font-weight: var(--fw-main);
   padding: 0.625rem;
@@ -550,8 +610,8 @@ input[type=number] {
   transition: all 150ms ease;
 }
 .dropdown-option .selected-check {
-  color: var(--emerald-accent);
-  font-size: 1rem;
+  color: var(--var(--emerald-accent));
+  font-size: var(--fs-1rem);
   font-weight: var(--fw-main);
   line-height: 1.5rem;
   opacity: 0;
@@ -597,7 +657,7 @@ input[type=number] {
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  gap: 0.75rem;
+  gap: var(--space-0.75rem);
   flex-wrap: nowrap;
 }
 
@@ -608,9 +668,8 @@ input[type=number] {
   align-items: center;
   gap: 0;
   flex-wrap: nowrap;
-  color: #fff;
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-bold);
+  font-size: var(--fs-var(--fs-sm));
+  font-weight: var(--fw-var(--fw-bold));
   width: 2rem;
   height: 2rem;
   border-radius: 0.5rem;
@@ -628,16 +687,15 @@ input[type=number] {
 }
 
 .option-title {
-  color: #fff;
-  font-size: var(--fs-sm);
-  font-weight: 600;
+  font-size: var(--fs-var(--fs-sm));
+  font-weight: var(--fw-600);
   line-height: 1rem;
 }
 
 .option-subtitle {
-  color: var(--text-muted);
-  font-size: 10px;
-  font-weight: var(--fw-sm);
+  color: var(--var(--text-muted));
+  font-size: var(--fs-10px);
+  font-weight: var(--fw-var(--fw-sm));
   line-height: 1.25;
   transition: color 150ms ease;
 }

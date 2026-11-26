@@ -17,6 +17,7 @@ export interface Player {
   position: PlayerPosition;
   rating: string;
   foot: PlayerFoot;
+  captain?: boolean;
 }
 // هيكل كل طاقم
 export interface TeamLines {

@@ -6,7 +6,7 @@
   top: 20px;
   left: 10px;
   padding: 10px;
-  background-color: var(--text-white);
+  background-color: var(--bg-card);
   z-index: 999;
   cursor: pointer;
   border: none;
@@ -15,14 +15,14 @@
 
 /* Dailog-Menu */
 .dailog-menu {
-  @include flex-box($direction: column, $gap: 20px);
+  @include flex-box($direction: column, $gap: md);
   position: absolute;
   top: 50%;
   left: 50%;
   width: 600px;
   padding: 25px;
   background-color: var(--bg-card);
-  z-index: 99999;
+  z-index: 99999999;
   border-radius: 20px;
   transform: translate(-50%, -40%);
   opacity: 0;
@@ -42,7 +42,7 @@
     border-bottom: 1px solid var(--hover-btn);
 
     .left {
-      @include flex-box($align: center, $gap: 15px);
+      @include flex-box($align: center, $gap: sm);
 
       .football-icon {
         @include flex-box($justify: center, $align: center);
@@ -57,7 +57,7 @@
       }
 
       .title {
-        @include flex-box($direction: column, $align: flex-start, $gap: 6px);
+        @include flex-box($direction: column, $align: flex-start, $gap: xs);
 
         span {
           @include text-style($color: #f9f9f978);
@@ -68,13 +68,13 @@
 
   /* form */
   .player-form {
-    @include flex-box($direction: column, $gap: 25px);
+    @include flex-box($direction: column, $gap: md);
 
     .form-group {
-      @include flex-box($direction: column, $gap: 15px);
+      @include flex-box($direction: column, $gap: sm);
 
       label {
-        @include text-style($color: var(--text-white), $size: var(--fs-lg));
+        @include text-style( $size: lg);
 
         &::after {
           content: "*";
@@ -111,14 +111,14 @@
       }
 
       .player-position {
-        @include flex-box($justify: space-between, $align: center, $gap: 10px);
+        @include flex-box($justify: space-between, $align: center, $gap: sm);
         position: relative;
         width: 100%;
         padding: 11px 12px;
         cursor: pointer;
 
         .left-pos {
-          @include flex-box($align: center, $gap: 10px);
+          @include flex-box($align: center, $gap: sm);
           overflow: hidden;
 
           .trigger-icon-bg {
